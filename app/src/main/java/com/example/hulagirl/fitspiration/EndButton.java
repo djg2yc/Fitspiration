@@ -1,86 +1,92 @@
 package com.example.hulagirl.fitspiration;
 
-import android.annotation.SuppressLint;
-import android.icu.text.SimpleDateFormat;
-import android.os.Build;
-import android.os.Handler;
-import android.support.annotation.RequiresApi;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.v4.app.TaskStackBuilder;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.support.v4.app.NotificationCompat;
 import android.view.View;
-import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RemoteViews;
 import android.widget.TextView;
 
-import java.util.Date;
-
 public class EndButton extends AppCompatActivity {
+   private NotificationCompat.Builder builder;
+    private NotificationManager notificationManager;
+    private int notification_id;
+    private RemoteViews remoteViews;
+    private Context context;
 
-    private TextView tvDay, tvHour, tvMinute, tvSecond, tvEvent;
-    private LinearLayout linearLayout1, linearLayout2;
-    private Handler handler;
-    private Runnable runnable;
+    TextView mTextField;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_end_button);
 
-
-        initUI();
-        countDownStart();
-    }
+        final View someView = findViewById(R.id.background);
+        final View root = someView.getRootView();
 
 
-    @SuppressLint("SimpleDateFormat")
-    private void initUI() {
-        linearLayout1 = (LinearLayout) findViewById(R.id.ll1);
-        linearLayout2 = (LinearLayout) findViewById(R.id.ll2);
+        context = this;
+        mTextField = (TextView) findViewById(R.id.TextField);
 
-        tvHour = (TextView) findViewById(R.id.txtTimerHour);
-        tvMinute = (TextView) findViewById(R.id.txtTimerMinute);
-        tvSecond = (TextView) findViewById(R.id.txtTimerSecond);
-        tvEvent = (TextView) findViewById(R.id.tvevent);
-    }
+        new CountDownTimer(10000, 1000) {
 
-    // //////////////COUNT DOWN START/////////////////////////
-    public void countDownStart() {
-        handler = new Handler();
-        runnable = new Runnable() {
-            @RequiresApi(api = Build.VERSION_CODES.N)
-            @Override
-            public void run() {
-                handler.postDelayed(this, 1000);
-                try {
-                    SimpleDateFormat dateFormat = new SimpleDateFormat(
-                            "yyyy-MM-dd");
-                    // Here Set your Event Date
-                    Date eventDate = dateFormat.parse("2017-02-12");
-                    Date currentDate = new Date();
-                    if (!currentDate.after(eventDate)) {
-                        long diff = eventDate.getTime()
-                                - currentDate.getTime();
-                        long days = diff / (24 * 60 * 60 * 1000);
-                        diff -= days * (24 * 60 * 60 * 1000);
-                        long hours = diff / (60 * 60 * 1000);
-                        diff -= hours * (60 * 60 * 1000);
-                        long minutes = diff / (60 * 1000);
-                        diff -= minutes * (60 * 1000);
-                        long seconds = diff / 1000;
-                        tvDay.setText("" + String.format("%02d", days));
-                        tvHour.setText("" + String.format("%02d", hours));
-                        tvMinute.setText("" + String.format("%02d", minutes));
-                        tvSecond.setText("" + String.format("%02d", seconds));
-                    } else {
-                        linearLayout1.setVisibility(View.VISIBLE);
-                        linearLayout2.setVisibility(View.GONE);
-                        tvEvent.setText("Android Event Start");
-                        handler.removeCallbacks(runnable);
-                        // handler.removeMessages(0);
-                    }
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            public void onTick(long millisUntilFinished) {
+                mTextField.setText("minutes remaining: " +  millisUntilFinished / 1000);
             }
-        };
-        handler.postDelayed(runnable, 0);
+
+
+
+
+            public void onFinish() {
+
+
+
+                notificationManager = (NotificationManager)  getSystemService(NOTIFICATION_SERVICE);
+                remoteViews = new RemoteViews(getPackageName(), R.layout.custom_notification);
+
+                remoteViews.setImageViewResource(R.id.notif_icon, R.mipmap.run);
+                remoteViews.setTextViewText(R.id.notif_title, "Try A 5 Minute Walking Break!");
+
+
+                notification_id = (int) System.currentTimeMillis();
+                Intent button_intent = new Intent("button_clicked");
+                button_intent.putExtra("id", notification_id);
+
+                PendingIntent p_button_intent = PendingIntent.getBroadcast(context, 123, button_intent, 0);
+
+                Intent notifications_intent = new Intent(context, EndButton.class);
+                PendingIntent pendingIntent = PendingIntent.getActivity(context,0,notifications_intent,0);
+
+                builder = new NotificationCompat.Builder(context);
+                builder.setSmallIcon(R.mipmap.run).setAutoCancel(true)
+                        .setCustomBigContentView(remoteViews).setCustomBigContentView(remoteViews).setContentIntent(pendingIntent);
+
+                notificationManager.notify(notification_id,builder.build());
+
+                root.setBackgroundColor(ContextCompat.getColor(EndButton.this, R.color.colorChange));
+
+
+
+                mTextField.setText("done!");
+            }
+        }.start();
+
+
+
+
+
     }
-}
+
+
+
+
+        }

@@ -16,10 +16,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".HomeScreen"
+            android:name="HomeScreen"
             android:label="@string/title_activity_home_screen"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".EndButton"></activity>
+        <receiver android:name="Button_listener">
+            <intent-filter>
+                <action android:name="button_clicked"/>
+
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>

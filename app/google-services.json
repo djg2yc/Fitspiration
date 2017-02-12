@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "662795429308",
+    "firebase_url": "https://fitspiration-7e87c.firebaseio.com",
+    "project_id": "fitspiration-7e87c",
+    "storage_bucket": "fitspiration-7e87c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662795429308:android:1fe68a413c4c78c7",
+        "android_client_info": {
+          "package_name": "com.example.hulagirl.fitspiration"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "662795429308-g00sm2tht31jbjoc4ip83fhihnn7plps.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.hulagirl.fitspiration",
+            "certificate_hash": "542A5BF106B1AEE1D22644B28911555D4E1B3D97"
+          }
+        },
+        {
+          "client_id": "662795429308-g6cdb16lvobodr6m34mgti8fod2ujgtl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyASE5HWyAP05A0immQYtFRVCFuYPWks_lA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "662795429308-g6cdb16lvobodr6m34mgti8fod2ujgtl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

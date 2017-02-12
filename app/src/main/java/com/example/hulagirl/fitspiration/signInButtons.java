@@ -8,6 +8,7 @@ import android.widget.Button;
 
 public class signInButtons extends AppCompatActivity {
     Button login;
+    Button signIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +17,7 @@ public class signInButtons extends AppCompatActivity {
 
         login = (Button) findViewById(R.id.button3);
 
+        signIn = (Button) findViewById(R.id.button4) ;
         // Capture button clicks
         login.setOnClickListener(new View.OnClickListener() {
             public void onClick(View arg0) {
@@ -27,6 +29,18 @@ public class signInButtons extends AppCompatActivity {
             }
 
         });
+
+        signIn.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View arg0) {
+
+                // Start NewActivity.class
+                Intent myIntent = new Intent(signInButtons.this,
+                        HomeScreen.class);
+                startActivity(myIntent);
+            }
+
+        });
+
 
 
     }

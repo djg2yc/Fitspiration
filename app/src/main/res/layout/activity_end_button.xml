@@ -1,7 +1,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:backgroundTint="@color/colorBackground"
+    android:background="@color/colorBackground"
+    android:id="@+id/background">
 
     <LinearLayout
         android:id="@+id/ll1"
@@ -36,127 +39,26 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/ll2"
+    <TextView
+        android:text="TextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="49dp"
-        android:background="@drawable/square"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:visibility="visible"
-        android:layout_below="@+id/button5"
-        android:layout_centerHorizontal="true">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-
-            android:gravity="center"
-            android:orientation="vertical" >
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/txtTimerHour"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:gravity="center"
-                android:text="00"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#fff" />
-
-            <TextView
-                android:id="@+id/txt_TimerHour"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="Hour"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#fff" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/txtTimerMinute"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:gravity="center"
-                android:text="00"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#fff" />
-
-            <TextView
-                android:id="@+id/txt_TimerMinute"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="Minute"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#fff" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-
-            android:gravity="center"
-            android:orientation="vertical" >
-
-            <TextView
-                android:id="@+id/txtTimerSecond"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="3"
-                android:gravity="center"
-                android:text="00"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textColor="#fff" />
-
-            <TextView
-                android:id="@+id/txt_TimerSecond"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center_horizontal"
-                android:text="Second"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textColor="#fff" />
-        </LinearLayout>
-    </LinearLayout>
+        android:layout_centerVertical="true"
+        android:id="@+id/TextField"
+        android:textSize="30sp"
+        android:textColor="@color/colorAccent"
+        android:layout_centerHorizontal="true" />
 
     <Button
-        android:text="Button"
+        android:text="END!"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button5"
         android:layout_weight="1"
-        android:layout_below="@+id/ll1"
+        android:layout_above="@+id/TextField"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="135dp" />
+        android:layout_marginBottom="63dp"
+        android:textSize="36sp"
+        android:fontFamily="@string/common_google_play_services_install_title" />
 
 </RelativeLayout>
